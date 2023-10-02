@@ -1,7 +1,5 @@
 macro_rules! reverse {
-    ($first: tt) => {
-        print!("{}", stringify!($first));
-    };
+    () => {};
     ($first: tt $($tt:tt)*) => {
         reverse!($($tt)*);
         print!("{}", stringify!($first));
@@ -9,9 +7,7 @@ macro_rules! reverse {
 }
 
 macro_rules! zip {
-    ($a:literal, $b:literal) => {
-        print!("{}", stringify!( ($a, $b) ));
-    };
+    (,) => {};
     ($a:literal $($stream_a:literal)*, $b:literal $($stream_b:literal)*) => {
         print!("{}", stringify!( ($a, $b) ));
         zip!($($stream_a)*, $($stream_b)*);
