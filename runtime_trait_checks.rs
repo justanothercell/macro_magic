@@ -28,15 +28,15 @@ macro_rules! default_or_none {
                 None
             }
         }
-        struct Temp<T>(T);
-        impl<T: Default> Temp<T> {
+        struct Wrapper<T>(T);
+        impl<T: Default> Wrapper<T> {
             #[allow(unused)]
             fn maybe_default() -> Option<T> {
                 Some(T::default())
             }
         }
-        impl<T> Defaulter<T> for Temp<T>{}
-        Temp::<$name>::maybe_default()
+        impl<T> Defaulter<T> for Wrapper<T>{}
+        Wrapper::<$name>::maybe_default()
     }}
 }
 
